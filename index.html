@@ -3,38 +3,55 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TopScore Notes | Premium Study Material</title>
+<title>Umar Notes - Premium</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-<link href=https://drive.google.com/file/d/1TLvbWvWWdkmcvPjqunwEcaCF71jjFEWV/view?usp=drivesdk
+
 <style>
-:root{
---brown:#6f4e37;
---light:#f5f0e6;
---dark:#3e2723;
---white:#ffffff;
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+scroll-behavior:smooth;
 }
 
 body{
-margin:0;
-font-family:'Poppins',sans-serif;
-background:var(--light);
+background:linear-gradient(135deg,#3e2723,#5d4037);
+color:white;
 overflow-x:hidden;
 }
 
+/* NAVBAR */
 nav{
+position:fixed;
+width:100%;
+padding:15px 10%;
 display:flex;
 justify-content:space-between;
-padding:15px 5%;
-background:var(--brown);
-color:white;
+align-items:center;
+background:rgba(0,0,0,0.3);
+backdrop-filter:blur(10px);
+z-index:1000;
 }
 
-.logo{
-font-size:22px;
+nav h2{
 font-weight:700;
 }
 
+nav a{
+color:white;
+text-decoration:none;
+margin-left:20px;
+font-weight:500;
+transition:0.3s;
+}
+
+nav a:hover{
+color:#ffcc80;
+}
+
+/* HERO */
 .hero{
 height:100vh;
 display:flex;
@@ -42,181 +59,203 @@ flex-direction:column;
 justify-content:center;
 align-items:center;
 text-align:center;
-position:relative;
-background:linear-gradient(135deg,#8d6e63,#5d4037);
-color:white;
-overflow:hidden;
+padding:0 20px;
 }
 
 .hero h1{
-font-size:42px;
-margin-bottom:15px;
-z-index:2;
+font-size:50px;
+background:linear-gradient(90deg,#ffcc80,#ffffff);
+-webkit-background-clip:text;
+color:transparent;
+animation:fadeIn 2s ease-in-out;
 }
 
 .hero p{
-z-index:2;
-}
-
-.section{
-padding:60px 10%;
-text-align:center;
-}
-
-.card{
-background:white;
-padding:30px;
-border-radius:15px;
-box-shadow:0 15px 30px rgba(0,0,0,0.2);
-max-width:400px;
-margin:auto;
-}
-
-.price{
-font-size:24px;
-font-weight:700;
-color:var(--brown);
-margin:15px 0;
+margin:20px 0;
+font-size:18px;
+max-width:600px;
 }
 
 .btn{
-display:inline-block;
-padding:12px 25px;
-margin:10px;
-background:var(--dark);
+padding:12px 30px;
+background:#ff9800;
+border:none;
+border-radius:30px;
+cursor:pointer;
+font-size:16px;
 color:white;
-border-radius:8px;
-text-decoration:none;
 transition:0.3s;
+text-decoration:none;
 }
 
 .btn:hover{
-background:var(--brown);
-transform:scale(1.05);
+transform:scale(1.1);
+background:#ffa726;
+box-shadow:0 10px 30px rgba(0,0,0,0.4);
 }
 
-/* 3D Floating Study Icons */
+/* STATS */
+.stats{
+display:flex;
+justify-content:center;
+gap:40px;
+padding:80px 10%;
+flex-wrap:wrap;
+}
 
-.icon{
-position:absolute;
+.stat-box{
+background:rgba(255,255,255,0.1);
+backdrop-filter:blur(15px);
+padding:30px;
+border-radius:20px;
+width:220px;
+text-align:center;
+transition:0.4s;
+}
+
+.stat-box:hover{
+transform:translateY(-10px);
+box-shadow:0 20px 40px rgba(0,0,0,0.5);
+}
+
+.stat-box h2{
 font-size:40px;
-animation:float 6s infinite ease-in-out;
-opacity:0.8;
+margin-bottom:10px;
 }
 
-.icon:nth-child(1){ top:10%; left:10%; animation-delay:3s;}
-.icon:nth-child(2){ top:20%; right:15%; animation-delay:4s;}
-.icon:nth-child(3){ bottom:20%; left:20%; animation-delay:5s;}
-.icon:nth-child(4){ bottom:15%; right:10%; animation-delay:0s;}
-.icon:nth-child(5){ top:50%; left:50%; animation-delay:3s;}
-. icon:nth-child(6) too:60%; upper:60%; 3d moving stars;5s;}
-@keyframes float{
-0%{ transform:translateY(0px) rotate(0deg);}
-50%{ transform:translateY(-20px) rotate(10deg);}
-100%{ transform:translateY(0px) rotate(0deg);}
+/* NOTES SECTION */
+.notes{
+padding:80px 10%;
+text-align:center;
 }
 
+.notes h2{
+margin-bottom:40px;
+font-size:35px;
+}
+
+.card-container{
+display:flex;
+gap:30px;
+justify-content:center;
+flex-wrap:wrap;
+}
+
+.card{
+background:rgba(255,255,255,0.1);
+padding:30px;
+border-radius:20px;
+width:250px;
+transition:0.4s;
+}
+
+.card:hover{
+transform:translateY(-10px);
+box-shadow:0 20px 40px rgba(0,0,0,0.5);
+}
+
+.card h3{
+margin-bottom:15px;
+}
+
+/* FOOTER */
 footer{
-background:var(--dark);
-color:white;
 padding:30px;
 text-align:center;
-margin-top:40px;
+background:rgba(0,0,0,0.4);
+margin-top:50px;
 }
 
-@media(max-width:768px){
-.hero h1{
-font-size:28px;
-}
+/* ANIMATIONS */
+@keyframes fadeIn{
+from{opacity:0; transform:translateY(30px);}
+to{opacity:1; transform:translateY(0);}
 }
 </style>
 </head>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
-<script>
-const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
-const renderer = new THREE.WebGLRenderer({alpha:true});
-renderer.setSize(window.innerWidth, window.innerHeight);
-document.body.appendChild(renderer.domElement);
-renderer.domElement.style.position = "fixed";
-renderer.domElement.style.top = "0";
-renderer.domElement.style.left = "0";
-renderer.domElement.style.zIndex = "-1";
-
-const geometry = new THREE.BoxGeometry();
-const material = new THREE.MeshBasicMaterial({color: 0x6f4e37, wireframe:true});
-const cube = new THREE.Mesh(geometry, material);
-scene.add(cube);
-
-camera.position.z = 5;
-
-function animate() {
-requestAnimationFrame(animate);
-cube.rotation.x += 0.01;
-cube.rotation.y += 0.01;
-renderer.render(scene, camera);
-}
-
-animate();
-</script>
 <body>
 
 <nav>
-<div class="logo">TopScore Notes</div>
+<h2>Umar Notes</h2>
+<div>
+<a href="#">Home</a>
+<a href="#notes">Notes</a>
+<a href="#contact">Contact</a>
+</div>
 </nav>
 
 <section class="hero">
-
-<!-- Floating Study Icons -->
-<div class="icon">📚</div>
-<div class="icon">✏️</div>
-<div class="icon">📝</div>
-<div class="icon">📊</div>
-<div class="icon">💯</div>
-
-<h1>Score 95% with Premium Notes</h1>
-<p>High Quality Handwritten Notes for Class 10 & 11</p>
-
+<h1>Premium 10th & 11th Notes</h1>
+<p>Exam Oriented • Handwritten • Board Level Preparation • Premium Quality Notes</p>
+<a href="#notes" class="btn">Explore Notes</a>
 </section>
+
 <section class="stats">
-  <div class="stat-box">
-    <h2 class="counter" data-target="500">0</h2>
-    <p>Students Trusted</p>
-  </div>
-  <div class="stat-box">
-    <h2 class="counter" data-target="95">0</h2>
-    <p>Average Score %</p>
-  </div>
-  <div class="stat-box">
-    <h2 class="counter" data-target="100">0</h2>
-    <p>Exam Oriented</p>
-  </div>
+<div class="stat-box">
+<h2 class="counter" data-target="500">0</h2>
+<p>Students Trusted</p>
+</div>
+<div class="stat-box">
+<h2 class="counter" data-target="95">0</h2>
+<p>Average Score %</p>
+</div>
+<div class="stat-box">
+<h2 class="counter" data-target="100">0</h2>
+<p>Exam Oriented</p>
+</div>
 </section>
-<section class="section">
+
+<section class="notes" id="notes">
+<h2>Available Notes</h2>
+<div class="card-container">
 
 <div class="card">
-<h2>Class 10 Science Notes</h2>
-<p>Important Questions + PYQs + Exam Tricks</p>
-<div class="price">₹199</div>
-
-<a class="btn" href="https://wa.me/919797288473?text=Hello%20I%20want%20to%20buy%20your%20Class%2010%20Science%20Notes" target="_blank">
-Buy on WhatsApp
-</a>
-
-<a class="btn" href="https://drive.google.com/uc?export=download&id=1Mtj9oU0VxP-YeJ3qevYrhp8GBMs-dGgJ" target="_blank">
-Download After Payment
-</a>
-
+<h3>Class 10 Science</h3>
+<p>Full Chapter Wise Notes with Important Questions</p>
+<br>
+<a href="#" class="btn">Download PDF</a>
 </div>
 
+<div class="card">
+<h3>Class 10 Maths</h3>
+<p>Formula Sheets + Most Important Questions</p>
+<br>
+<a href="#" class="btn">Download PDF</a>
+</div>
+
+<div class="card">
+<h3>Class 11 Physics</h3>
+<p>Concept Based Short Notes for Quick Revision</p>
+<br>
+<a href="#" class="btn">Download PDF</a>
+</div>
+
+</div>
 </section>
 
-<footer>
-<p>Email: topscorenotes@gmail.com</p>
-<p>WhatsApp: 9797288473</p>
-<p>© 2026 TopScore Notes | All Rights Reserved</p>
+<footer id="contact">
+<p>© 2026 Umar Notes | Premium Ultra Pro Max Version 🚀</p>
 </footer>
+
+<script>
+const counters = document.querySelectorAll('.counter');
+counters.forEach(counter => {
+counter.innerText = '0';
+const updateCounter = () => {
+const target = +counter.getAttribute('data-target');
+const c = +counter.innerText;
+const increment = target / 200;
+if(c < target){
+counter.innerText = `${Math.ceil(c + increment)}`;
+setTimeout(updateCounter, 10);
+} else {
+counter.innerText = target;
+}
+};
+updateCounter();
+});
+</script>
 
 </body>
 </html>
