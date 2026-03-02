@@ -9,82 +9,53 @@
 
 <style>
 :root{
---primary:#4f46e5;
---dark:#111827;
---light:#f3f4f6;
---white:#fff;
+--brown:#6f4e37;
+--light:#f5f0e6;
+--dark:#3e2723;
+--white:#ffffff;
 }
 
 body{
 margin:0;
 font-family:'Poppins',sans-serif;
 background:var(--light);
-transition:0.3s;
-}
-
-.dark{
-background:#0f172a;
-color:white;
+overflow-x:hidden;
 }
 
 nav{
 display:flex;
 justify-content:space-between;
 padding:15px 5%;
-background:white;
-position:sticky;
-top:0;
-box-shadow:0 2px 10px rgba(0,0,0,0.1);
-z-index:1000;
+background:var(--brown);
+color:white;
 }
 
 .logo{
 font-size:22px;
 font-weight:700;
-color:var(--primary);
-}
-
-.nav-links{
-display:flex;
-gap:20px;
-}
-
-.nav-links a{
-text-decoration:none;
-color:#333;
-font-weight:500;
-}
-
-.menu-btn{
-display:none;
-font-size:22px;
-cursor:pointer;
 }
 
 .hero{
-height:90vh;
+height:100vh;
 display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
 text-align:center;
-background:linear-gradient(135deg,#e0e7ff,#faf5ff);
-padding:20px;
+position:relative;
+background:linear-gradient(135deg,#8d6e63,#5d4037);
+color:white;
+overflow:hidden;
 }
 
 .hero h1{
-font-size:40px;
+font-size:42px;
 margin-bottom:15px;
+z-index:2;
 }
 
-.hero button{
-padding:12px 30px;
-border:none;
-background:var(--primary);
-color:white;
-border-radius:30px;
-cursor:pointer;
-font-size:16px;
+.hero p{
+z-index:2;
 }
 
 .section{
@@ -92,95 +63,68 @@ padding:60px 10%;
 text-align:center;
 }
 
-.cards{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:20px;
-margin-top:40px;
-}
-
 .card{
 background:white;
-padding:20px;
-border-radius:12px;
-box-shadow:0 5px 20px rgba(0,0,0,0.08);
-}
-
-.price{
-font-size:22px;
-font-weight:700;
-color:var(--primary);
-}
-
-.buy-btn{
-margin-top:15px;
-display:inline-block;
-padding:10px 22px;
-background:#111827;
-color:white;
-border-radius:6px;
-cursor:pointer;
-text-decoration:none;
-}
-
-.buy-btn:hover{
-background:var(--primary);
-}
-
-.testimonial{
-background:var(--primary);
-color:white;
-padding:40px;
-border-radius:10px;
-margin-top:20px;
-}
-
-.faq{
-text-align:left;
-max-width:700px;
+padding:30px;
+border-radius:15px;
+box-shadow:0 15px 30px rgba(0,0,0,0.2);
+max-width:400px;
 margin:auto;
 }
 
-.faq h4{
-cursor:pointer;
-background:#ddd;
-padding:10px;
-border-radius:5px;
+.price{
+font-size:24px;
+font-weight:700;
+color:var(--brown);
+margin:15px 0;
 }
 
-.faq p{
-display:none;
-padding:10px;
+.btn{
+display:inline-block;
+padding:12px 25px;
+margin:10px;
+background:var(--dark);
+color:white;
+border-radius:8px;
+text-decoration:none;
+transition:0.3s;
+}
+
+.btn:hover{
+background:var(--brown);
+transform:scale(1.05);
+}
+
+/* 3D Floating Study Icons */
+
+.icon{
+position:absolute;
+font-size:40px;
+animation:float 6s infinite ease-in-out;
+opacity:0.8;
+}
+
+.icon:nth-child(1){ top:10%; left:10%; animation-delay:0s;}
+.icon:nth-child(2){ top:20%; right:15%; animation-delay:2s;}
+.icon:nth-child(3){ bottom:20%; left:20%; animation-delay:4s;}
+.icon:nth-child(4){ bottom:15%; right:10%; animation-delay:1s;}
+.icon:nth-child(5){ top:50%; left:50%; animation-delay:3s;}
+
+@keyframes float{
+0%{ transform:translateY(0px) rotate(0deg);}
+50%{ transform:translateY(-20px) rotate(10deg);}
+100%{ transform:translateY(0px) rotate(0deg);}
 }
 
 footer{
-background:#111827;
+background:var(--dark);
 color:white;
 padding:30px;
 text-align:center;
-}
-
-.toggle-dark{
-cursor:pointer;
+margin-top:40px;
 }
 
 @media(max-width:768px){
-.nav-links{
-display:none;
-flex-direction:column;
-background:white;
-position:absolute;
-top:60px;
-right:0;
-width:200px;
-padding:20px;
-}
-.nav-links.active{
-display:flex;
-}
-.menu-btn{
-display:block;
-}
 .hero h1{
 font-size:28px;
 }
@@ -192,89 +136,46 @@ font-size:28px;
 
 <nav>
 <div class="logo">TopScore Notes</div>
-<div class="menu-btn" onclick="toggleMenu()">☰</div>
-<div class="nav-links" id="navLinks">
-<a href="#">Home</a>
-<a href="#notes">Notes</a>
-<a href="#contact">Contact</a>
-<span class="toggle-dark" onclick="toggleDark()">🌙</span>
-</div>
 </nav>
 
 <section class="hero">
-<h1>Score 95% with Premium Handwritten Notes</h1>
-<button onclick="scrollToNotes()">View Notes</button>
+
+<!-- Floating Study Icons -->
+<div class="icon">📚</div>
+<div class="icon">✏️</div>
+<div class="icon">📝</div>
+<div class="icon">📊</div>
+<div class="icon">💯</div>
+
+<h1>Score 95% with Premium Notes</h1>
+<p>High Quality Handwritten Notes for Class 10 & 11</p>
+
 </section>
 
-<section class="section" id="notes">
-<h2>Our Notes</h2>
-
-<div class="cards">
+<section class="section">
 
 <div class="card">
-<h3>Class 10 Science</h3>
-<p>Important Questions + PYQs + Short Notes</p>
+<h2>Class 10 Science Notes</h2>
+<p>Important Questions + PYQs + Exam Tricks</p>
 <div class="price">₹199</div>
-<a class="buy-btn" href="https://wa.me/919797288473?text=Hello%20I%20want%20to%20buy%20Class%2010%20Science%20Notes" target="_blank">
+
+<a class="btn" href="https://wa.me/919797288473?text=Hello%20I%20want%20to%20buy%20your%20Class%2010%20Science%20Notes" target="_blank">
 Buy on WhatsApp
 </a>
-</div>
 
-<div class="card">
-<h3>Class 11 Physics</h3>
-<p>Concept Clarity + Numericals</p>
-<div class="price">₹299</div>
-<a class="buy-btn" href="https://wa.me/919797288473?text=Hello%20I%20want%20to%20buy%20Class%2011%20Physics%20Notes" target="_blank">
-Buy on WhatsApp
+<a class="btn" href="https://drive.google.com/uc?export=download&id=1Mtj9oU0VxP-YeJ3qevYrhp8GBMs-dGgJ" target="_blank">
+Download After Payment
 </a>
-</div>
 
 </div>
+
 </section>
 
-<section class="section">
-<h2>Testimonials</h2>
-<div class="testimonial">
-<p>"I scored 94% using these notes!"</p>
-<b>- Happy Student</b>
-</div>
-</section>
-
-<section class="section">
-<h2>FAQ</h2>
-<div class="faq">
-<h4 onclick="toggleFaq(this)">How will I receive notes?</h4>
-<p>You will receive the PDF directly on WhatsApp after payment confirmation.</p>
-
-<h4 onclick="toggleFaq(this)">Are these exam oriented?</h4>
-<p>Yes, fully board exam focused and important topics covered.</p>
-</div>
-</section>
-
-<footer id="contact">
+<footer>
 <p>Email: topscorenotes@gmail.com</p>
 <p>WhatsApp: 9797288473</p>
-<p>© 2026 TopScore Notes</p>
+<p>© 2026 TopScore Notes | All Rights Reserved</p>
 </footer>
-
-<script>
-function toggleMenu(){
-document.getElementById("navLinks").classList.toggle("active");
-}
-
-function scrollToNotes(){
-document.getElementById("notes").scrollIntoView({behavior:'smooth'});
-}
-
-function toggleDark(){
-document.body.classList.toggle("dark");
-}
-
-function toggleFaq(element){
-let p=element.nextElementSibling;
-p.style.display=p.style.display==="block"?"none":"block";
-}
-</script>
 
 </body>
 </html>
